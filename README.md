@@ -4,6 +4,24 @@ Easily show your customers stripe infomation in your own app.
 
 Works with any auth provider! See Considerations
 
+# Styling
+
+Using ShadCN, you can style it however you like. 
+
+# Install
+
+Copy my code from:
+
+./lib/stripe-ui-kit.ts
+./lib/stripe-ui-types.ts
+./components/stripe-ui-kit/(everything in this directory)
+
+to your project.
+
+Then simply add the API endpoint located at ./api/stripe-ui-kit/[route]/route.ts to your project.
+
+You can now modify all components and code to your liking. Everything is 100% native using the Stripe API.
+
 # Requirements
 
 Tanstack Query, Next.js, zod
