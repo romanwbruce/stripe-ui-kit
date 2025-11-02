@@ -16,7 +16,7 @@ Copy my code from:
 ./lib/stripe-ui-types.ts
 ./components/stripe-ui-kit/(everything in this directory)
 
-to your project.
+to your project. Ensure you have TanStack query, Zod, react-hook-form, Stripe installed properly. 
 
 Then simply add the API endpoint located at ./api/stripe-ui-kit/[route]/route.ts to your project.
 
@@ -24,7 +24,7 @@ You can now modify all components and code to your liking. Everything is 100% na
 
 # Requirements
 
-Tanstack Query, Next.js, zod
+Tanstack Query, Next.js, zod, react-hook-form, Stripe
 
 # Considerations
 
