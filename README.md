@@ -1,29 +1,45 @@
-# Create T3 App
+# Stripe UI Kit
 
-This is a [T3 Stack](https://create.t3.gg/) project bootstrapped with `create-t3-app`.
+Easily show your customers stripe infomation in your own app.
 
-## What's next? How do I make an app with this?
+Works with any auth provider! See Considerations
 
-We try to keep this project as simple as possible, so you can start with just the scaffolding we set up for you, and add additional things later when they become necessary.
+# Requirements
 
-If you are not familiar with the different technologies used in this project, please refer to the respective docs. If you still are in the wind, please join our [Discord](https://t3.gg/discord) and ask for help.
+Tanstack Query, Next.js, zod
 
-- [Next.js](https://nextjs.org)
-- [NextAuth.js](https://next-auth.js.org)
-- [Prisma](https://prisma.io)
-- [Drizzle](https://orm.drizzle.team)
-- [Tailwind CSS](https://tailwindcss.com)
-- [tRPC](https://trpc.io)
+# Considerations
 
-## Learn More
+In order to have it work properly, you will need to modify the auth function to work with your provider. 
 
-To learn more about the [T3 Stack](https://create.t3.gg/), take a look at the following resources:
+```
+//Must return the stripe customerId of the logged in user.
+async function auth(req: NextRequest): Promise<string | null> {
+  // Example: replace this with Clerk, JWT, or cookie logic later
 
-- [Documentation](https://create.t3.gg/)
-- [Learn the T3 Stack](https://create.t3.gg/en/faq#what-learning-resources-are-currently-available) — Check out these awesome tutorials
+  /*
+  const authHeader = req.headers.get("authorization");
 
-You can check out the [create-t3-app GitHub repository](https://github.com/t3-oss/create-t3-app) — your feedback and contributions are welcome!
+  if (!authHeader || !authHeader.startsWith("Bearer ")) {
+    return null;
+  }
 
-## How do I deploy this?
+  const token = authHeader.split(" ")[1];
+*/
 
-Follow our deployment guides for [Vercel](https://create.t3.gg/en/deployment/vercel), [Netlify](https://create.t3.gg/en/deployment/netlify) and [Docker](https://create.t3.gg/en/deployment/docker) for more information.
+  // Dummy verification logic
+  if (true) {
+    return "cus_S9KoQJg6Cy8ydG"; // Mocked customer ID
+  }
+
+  return null;
+}
+```
+
+For security reasons, you should determine which stripe customer ID to use based off the current logged in user (instead of passing it from the frontend).
+
+This function should return a string if have the customer ID, or null if the user is not logged in. 
+
+It is good practice to store the customer ID in your user table, or as metadata if you're using Clerk. 
+
+For this example, i'm just returning a test customer ID.
